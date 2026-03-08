@@ -1,26 +1,165 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #1a1208;
+  --ink2: #0e0b06;
+  --washi: #f5f0e8;
+  --cream: #faf7f2;
+  --paper: #f2ede4;
+  --gold: #c9a84c;
+  --gold2: #e8d5a3;
+  --goldf: rgba(201, 168, 76, 0.1);
+  --red: #9b2335;
+  --stone: #8a8275;
+  --stone2: #b5ae9f;
+  --pale: #ece7de;
+  --indigo: #1a2744;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-washi: var(--washi);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-gold: var(--gold);
+  --color-gold2: var(--gold2);
+  --color-goldf: var(--goldf);
+  --color-red: var(--red);
+  --color-stone: var(--stone);
+  --color-stone2: var(--stone2);
+  --color-pale: var(--pale);
+  --color-indigo: var(--indigo);
+  --font-serif-jp: var(--font-noto-serif-jp);
+  --font-cormorant: var(--font-cormorant-garamond);
+  --font-sans-jp: var(--font-noto-sans-jp);
+  --font-dm: var(--font-dm-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-dm), sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* Keyframes */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.65);
+  }
+}
+
+@keyframes spin-ring {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scroll-line {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes map-pin-ring {
+  0%,
+  100% {
+    r: 9;
+    opacity: 0.4;
+  }
+  50% {
+    r: 16;
+    opacity: 0;
+  }
+}
+
+/* Region gradient fallbacks */
+.bg-hkd {
+  background: linear-gradient(135deg, #2c4a6e, #4a7a9b, #c8e0f4);
+}
+.bg-thk {
+  background: linear-gradient(135deg, #2d5016, #4a7c59, #c8e6c9);
+}
+.bg-knt {
+  background: linear-gradient(135deg, #1a1a2e, #302b63, #e94560);
+}
+.bg-chb {
+  background: linear-gradient(160deg, #667eea, #764ba2, #f093fb);
+}
+.bg-kns {
+  background: linear-gradient(135deg, #8b0000, #c0392b, #f39c12);
+}
+.bg-cgk {
+  background: linear-gradient(135deg, #134e5e, #71b280);
+}
+.bg-shk {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+.bg-kys {
+  background: linear-gradient(135deg, #1a1a2e, #6b3a7d, #c06c84);
+}
+.bg-okn {
+  background: linear-gradient(135deg, #0099f7, #00c9ff, #92fe9d);
+}
+
+/* Food gradient fallbacks */
+.bg-su {
+  background: linear-gradient(135deg, #1a0a00, #5d3a1a, #c0392b);
+}
+.bg-rm {
+  background: linear-gradient(135deg, #7f1d1d, #b45309, #d97706);
+}
+.bg-tp {
+  background: linear-gradient(135deg, #78350f, #d97706, #fef08a);
+}
+.bg-ks {
+  background: linear-gradient(135deg, #1e3a1e, #166534, #4ade80);
+}
+.bg-yk {
+  background: linear-gradient(135deg, #450a0a, #b91c1c, #f97316);
 }
