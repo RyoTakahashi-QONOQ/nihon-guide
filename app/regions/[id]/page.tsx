@@ -12,8 +12,9 @@ export function generateStaticParams() {
   return REGIONS.map((r) => ({ id: r.id }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const region = REGIONS.find((r) => r.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const region = REGIONS.find((r) => r.id === id);
   if (!region) return {};
   return {
     title: `${region.n} (${region.en}) — NIHON Japan Travel Guide`,
@@ -26,8 +27,9 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   };
 }
 
-export default function RegionPage({ params }: { params: { id: string } }) {
-  const region = REGIONS.find((r) => r.id === params.id);
+export default async function RegionPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const region = REGIONS.find((r) => r.id === id);
   if (!region) notFound();
 
   const regionSpots = SPOTS.filter((s) => s.r === region.id);
@@ -44,7 +46,6 @@ export default function RegionPage({ params }: { params: { id: string } }) {
       />
 
       <div className="detail-content">
-        {/* Info Cards */}
         <div className="info-grid">
           <div className="info-card">
             <div className="info-card-label">SPOTS</div>
@@ -60,13 +61,11 @@ export default function RegionPage({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        {/* Description */}
         <div className="detail-section">
           <h2><em>ABOUT</em>{region.en}について</h2>
           <p>{region.desc}</p>
         </div>
 
-        {/* Highlights */}
         <div className="detail-section">
           <h2><em>HIGHLIGHTS</em>見どころ</h2>
           <ul className="highlights-list">
@@ -76,13 +75,11 @@ export default function RegionPage({ params }: { params: { id: string } }) {
           </ul>
         </div>
 
-        {/* Access */}
         <div className="detail-section">
           <h2><em>ACCESS</em>アクセス</h2>
           <p>{region.access}</p>
         </div>
 
-        {/* Spots in this region */}
         {regionSpots.length > 0 && (
           <div className="detail-section">
             <h2><em>DESTINATIONS</em>この地域のスポット</h2>

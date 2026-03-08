@@ -10,8 +10,9 @@ export function generateStaticParams() {
   return FOODS.map((f) => ({ id: f.id }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const food = FOODS.find((f) => f.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const food = FOODS.find((f) => f.id === id);
   if (!food) return {};
   return {
     title: `${food.n} (${food.en}) — NIHON Japan Food Guide`,
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   };
 }
 
-export default function FoodPage({ params }: { params: { id: string } }) {
-  const food = FOODS.find((f) => f.id === params.id);
+export default async function FoodPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const food = FOODS.find((f) => f.id === id);
   if (!food) notFound();
 
   const otherFoods = FOODS.filter((f) => f.id !== food.id);
@@ -41,19 +43,16 @@ export default function FoodPage({ params }: { params: { id: string } }) {
       />
 
       <div className="detail-content">
-        {/* Long Description */}
         <div className="detail-section">
           <h2><em>GUIDE</em>{food.n}ガイド</h2>
           <p>{food.longDesc}</p>
         </div>
 
-        {/* History */}
         <div className="detail-section">
           <h2><em>HISTORY</em>歴史</h2>
           <p>{food.history}</p>
         </div>
 
-        {/* Best Regions */}
         <div className="detail-section">
           <h2><em>WHERE TO EAT</em>おすすめ地域</h2>
           <ul className="highlights-list">
@@ -63,7 +62,6 @@ export default function FoodPage({ params }: { params: { id: string } }) {
           </ul>
         </div>
 
-        {/* Other Foods */}
         <div className="detail-section">
           <h2><em>MORE CUISINE</em>他の料理</h2>
           <div className="related-grid">

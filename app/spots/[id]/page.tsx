@@ -13,8 +13,9 @@ export function generateStaticParams() {
   return SPOTS.map((s) => ({ id: s.id }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const spot = SPOTS.find((s) => s.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const spot = SPOTS.find((s) => s.id === id);
   if (!spot) return {};
   return {
     title: `${spot.n} (${spot.en}) — NIHON Japan Travel Guide`,
@@ -27,8 +28,9 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   };
 }
 
-export default function SpotPage({ params }: { params: { id: string } }) {
-  const spot = SPOTS.find((s) => s.id === params.id);
+export default async function SpotPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const spot = SPOTS.find((s) => s.id === id);
   if (!spot) notFound();
 
   const region = REGIONS.find((r) => r.id === spot.r);
@@ -53,7 +55,6 @@ export default function SpotPage({ params }: { params: { id: string } }) {
       />
 
       <div className="detail-content">
-        {/* Info Cards */}
         <div className="info-grid">
           <div className="info-card">
             <div className="info-card-label">REGION</div>
@@ -75,20 +76,17 @@ export default function SpotPage({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        {/* Seasons */}
         <div className="tag-list" style={{ marginBottom: "2rem" }}>
           {spot.szn.map((s) => (
             <span key={s} className="tag">{seasonLabels[s]}</span>
           ))}
         </div>
 
-        {/* Long Description */}
         <div className="detail-section">
           <h2><em>OVERVIEW</em>{spot.n}ガイド</h2>
           <p>{spot.longDesc}</p>
         </div>
 
-        {/* Tags */}
         <div className="detail-section">
           <h2><em>FEATURES</em>特徴</h2>
           <div className="tag-list">
@@ -98,13 +96,11 @@ export default function SpotPage({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        {/* Access */}
         <div className="detail-section">
           <h2><em>ACCESS</em>アクセス</h2>
           <p>{spot.access}</p>
         </div>
 
-        {/* Tips */}
         <div className="detail-section">
           <h2><em>TIPS</em>旅のヒント</h2>
           <ul className="tips-list">
@@ -114,7 +110,6 @@ export default function SpotPage({ params }: { params: { id: string } }) {
           </ul>
         </div>
 
-        {/* Affiliate */}
         <div className="detail-section">
           <h2><em>BOOK</em>予約する</h2>
           <div className="affiliate-row">
@@ -127,7 +122,6 @@ export default function SpotPage({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        {/* Related Spots */}
         {relatedSpots.length > 0 && (
           <div className="detail-section">
             <h2><em>NEARBY</em>同じ地域のスポット</h2>
