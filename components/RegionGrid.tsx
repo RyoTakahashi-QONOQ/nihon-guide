@@ -1,22 +1,19 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { REGIONS } from "@/data/regions";
 
-interface RegionGridProps {
-  onToast: (msg: string) => void;
-}
-
-export default function RegionGrid({ onToast }: RegionGridProps) {
+export default function RegionGrid() {
   return (
     <section id="regions">
       <div className="sec">
         <div className="sech">
           <div className="sect"><em>REGIONS OF JAPAN</em>地域から探す</div>
-          <a href="#" className="seeall">View all regions →</a>
+          <Link href="/regions/hokkaido" className="seeall">View all regions →</Link>
         </div>
         <div className="rgrid">
           {REGIONS.map((r) => (
-            <div key={r.id} className="rcard" onClick={() => onToast(`Exploring ${r.en}...`)}>
+            <Link key={r.id} href={`/regions/${r.id}`} className="rcard" style={{ textDecoration: "none" }}>
               <div className={`rcimg ${r.css}`}>
                 <Image src={r.img} alt={r.en} fill style={{ objectFit: "cover" }} sizes="(max-width:768px) 50vw, 25vw" />
               </div>
@@ -27,7 +24,7 @@ export default function RegionGrid({ onToast }: RegionGridProps) {
                 <div className="rname">{r.n}</div>
                 <div className="ren">{r.en}</div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

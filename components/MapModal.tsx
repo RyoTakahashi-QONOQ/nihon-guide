@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { MAP_PINS } from "@/data/map-pins";
 
 interface MapModalProps {
@@ -33,6 +34,7 @@ const PIN_COORDS = [
 ];
 
 export default function MapModal({ open, onClose, onToast }: MapModalProps) {
+  const router = useRouter();
   const [selReg, setSelReg] = useState<string | null>(null);
   const [selPin, setSelPin] = useState<string | null>(null);
 
@@ -98,7 +100,7 @@ export default function MapModal({ open, onClose, onToast }: MapModalProps) {
                   <div className="mdname">{pinData.n}</div>
                   <div className="mden">{pinData.en}</div>
                   <p className="mddesc">{pinData.d}</p>
-                  <button className="mdbtn" onClick={() => { handleClose(); document.getElementById("spots")?.scrollIntoView({ behavior: "smooth" }); onToast("Showing spots..."); }}>
+                  <button className="mdbtn" onClick={() => { handleClose(); router.push(`/spots/${selPin}`); }}>
                     View full guide →
                   </button>
                 </div>

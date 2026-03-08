@@ -1,26 +1,26 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Spot } from "@/types";
 
 interface SpotGridProps {
   spots: Spot[];
-  onToast: (msg: string) => void;
 }
 
-export default function SpotGrid({ spots, onToast }: SpotGridProps) {
+export default function SpotGrid({ spots }: SpotGridProps) {
   return (
     <section id="spots">
       <div className="sec">
         <div className="sech">
           <div className="sect"><em>MUST-SEE DESTINATIONS</em>厳選スポット</div>
-          <a href="#" className="seeall">View all →</a>
+          <Link href="/spots/tokyo" className="seeall">View all →</Link>
         </div>
         {spots.length === 0 ? (
           <div className="nores">No spots match your filters. Try adjusting season or category.</div>
         ) : (
           <div className="spgrid">
             {spots.map((s) => (
-              <div key={s.id} className="scard" onClick={() => onToast(`Opening ${s.en}...`)}>
+              <Link key={s.id} href={`/spots/${s.id}`} className="scard" style={{ textDecoration: "none", color: "inherit" }}>
                 <div className="scimg">
                   <div className={`scimgbg ${s.css}`}>
                     <Image src={s.img} alt={s.en} fill style={{ objectFit: "cover" }} sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw" />
@@ -44,7 +44,7 @@ export default function SpotGrid({ spots, onToast }: SpotGridProps) {
                     <span className="sdlbl">Best: {s.best}</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

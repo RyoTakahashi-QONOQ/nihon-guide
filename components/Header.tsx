@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 
 interface HeaderProps {
@@ -16,15 +17,15 @@ export default function Header({ onOpenMap, onToast }: HeaderProps) {
 
   return (
     <header className={`site-header${scrolled ? " scrolled" : ""}`}>
-      <div className="logo">
+      <Link href="/" className="logo" style={{ textDecoration: "none" }}>
         <span className="logo-m">NIHON</span>
         <span className="logo-j">日本観光ガイド</span>
-      </div>
+      </Link>
       <nav className="site-nav">
-        <a href="#regions">REGIONS</a>
-        <a href="#spots">SPOTS</a>
-        <a href="#gourmet">GOURMET</a>
-        <a href="#cats">DISCOVER</a>
+        <a href="/#regions">REGIONS</a>
+        <a href="/#spots">SPOTS</a>
+        <a href="/#gourmet">GOURMET</a>
+        <a href="/#cats">DISCOVER</a>
       </nav>
       <div className="hright">
         <div className="lg">

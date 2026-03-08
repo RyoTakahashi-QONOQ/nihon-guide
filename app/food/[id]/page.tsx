@@ -1,0 +1,87 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { FOODS } from "@/data/foods";
+import Breadcrumb from "@/components/Breadcrumb";
+import DetailHero from "@/components/DetailHero";
+import Footer from "@/components/Footer";
+
+export function generateStaticParams() {
+  return FOODS.map((f) => ({ id: f.id }));
+}
+
+export function generateMetadata({ params }: { params: { id: string } }): Metadata {
+  const food = FOODS.find((f) => f.id === params.id);
+  if (!food) return {};
+  return {
+    title: `${food.n} (${food.en}) — NIHON Japan Food Guide`,
+    description: food.desc,
+    openGraph: {
+      title: `${food.en} — Japanese Cuisine Guide | NIHON`,
+      description: food.desc,
+      images: [{ url: food.img.replace(/w=\d+/, "w=1200"), width: 1200, height: 630 }],
+    },
+  };
+}
+
+export default function FoodPage({ params }: { params: { id: string } }) {
+  const food = FOODS.find((f) => f.id === params.id);
+  if (!food) notFound();
+
+  const otherFoods = FOODS.filter((f) => f.id !== food.id);
+
+  return (
+    <>
+      <Breadcrumb items={[{ label: "Cuisine", href: "/#gourmet" }, { label: food.en }]} />
+      <DetailHero
+        img={food.img.replace(/w=\d+/, "w=1400")}
+        title={food.n}
+        subtitle={food.en}
+        badge={food.cat}
+      />
+
+      <div className="detail-content">
+        {/* Long Description */}
+        <div className="detail-section">
+          <h2><em>GUIDE</em>{food.n}ガイド</h2>
+          <p>{food.longDesc}</p>
+        </div>
+
+        {/* History */}
+        <div className="detail-section">
+          <h2><em>HISTORY</em>歴史</h2>
+          <p>{food.history}</p>
+        </div>
+
+        {/* Best Regions */}
+        <div className="detail-section">
+          <h2><em>WHERE TO EAT</em>おすすめ地域</h2>
+          <ul className="highlights-list">
+            {food.bestRegions.map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Other Foods */}
+        <div className="detail-section">
+          <h2><em>MORE CUISINE</em>他の料理</h2>
+          <div className="related-grid">
+            {otherFoods.map((f) => (
+              <Link key={f.id} href={`/food/${f.id}`} className="related-card">
+                <div className="related-card-body">
+                  <h3>{f.n}</h3>
+                  <span className="en">{f.en}</span>
+                  <p>{f.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <Link href="/" className="back-link">← Back to NIHON top</Link>
+      </div>
+      <Footer />
+    </>
+  );
+}

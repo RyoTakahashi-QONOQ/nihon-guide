@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer>
@@ -9,15 +11,33 @@ export default function Footer() {
         </div>
         <div className="fcol">
           <h4>DISCOVER</h4>
-          <ul><li><a href="#">Regions</a></li><li><a href="#">UNESCO Sites</a></li><li><a href="#">Seasonal Guide</a></li><li><a href="#">Hidden Gems</a></li><li><a href="#">Day Trips</a></li></ul>
+          <ul>
+            <li><Link href="/regions/hokkaido">Hokkaido</Link></li>
+            <li><Link href="/regions/kansai">Kansai</Link></li>
+            <li><Link href="/regions/kyushu">Kyūshū</Link></li>
+            <li><Link href="/regions/okinawa">Okinawa</Link></li>
+            <li><Link href="/regions/chubu">Chūbu</Link></li>
+          </ul>
         </div>
         <div className="fcol">
-          <h4>PLAN</h4>
-          <ul><li><a href="#">Itineraries</a></li><li><a href="#">Transport</a></li><li><a href="#">Ryokan Guide</a></li><li><a href="#">Budget Tips</a></li><li><a href="#">Visa Info</a></li></ul>
+          <h4>DESTINATIONS</h4>
+          <ul>
+            <li><Link href="/spots/tokyo">Tokyo</Link></li>
+            <li><Link href="/spots/kyoto">Kyoto</Link></li>
+            <li><Link href="/spots/osaka">Osaka</Link></li>
+            <li><Link href="/spots/fuji">Mount Fuji</Link></li>
+            <li><Link href="/spots/hiroshima">Hiroshima</Link></li>
+          </ul>
         </div>
         <div className="fcol">
-          <h4>ABOUT</h4>
-          <ul><li><a href="#">Editorial</a></li><li><a href="#">Contributors</a></li><li><a href="#">Photography</a></li><li><a href="#">Contact</a></li><li><a href="#">Press</a></li></ul>
+          <h4>CUISINE</h4>
+          <ul>
+            <li><Link href="/food/sushi">Sushi</Link></li>
+            <li><Link href="/food/ramen">Ramen</Link></li>
+            <li><Link href="/food/tempura">Tempura</Link></li>
+            <li><Link href="/food/kaiseki">Kaiseki</Link></li>
+            <li><Link href="/food/izakaya">Izakaya</Link></li>
+          </ul>
         </div>
       </div>
       <div className="fbot">

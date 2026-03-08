@@ -38,10 +38,10 @@ export default function Home() {
       <SeasonBar season={season} setSeason={setSeason} onToast={toast} />
       <CategoryBar category={category} setCategory={setCategory} />
       <StatsBar />
-      <RegionGrid onToast={toast} />
-      <SpotGrid spots={filteredSpots} onToast={toast} />
+      <RegionGrid />
+      <SpotGrid spots={filteredSpots} />
       <SeasonalSection setSeason={setSeason} />
-      <FoodGrid onToast={toast} />
+      <FoodGrid />
       <CategoryScroll setCategory={setCategory} onToast={toast} />
       <Footer />
       <MapModal open={mapOpen} onClose={() => setMapOpen(false)} onToast={toast} />

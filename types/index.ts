@@ -8,6 +8,10 @@ export interface Region {
   cnt: string;
   img: string;
   css: string;
+  desc: string;
+  highlights: string[];
+  access: string;
+  bestSeason: string;
 }
 
 export interface Spot {
@@ -25,15 +29,22 @@ export interface Spot {
   tags: string[];
   img: string;
   css: string;
+  longDesc: string;
+  access: string;
+  tips: string[];
 }
 
 export interface Food {
+  id: string;
   n: string;
   en: string;
   cat: string;
   desc: string;
   img: string;
   css: string;
+  longDesc: string;
+  history: string;
+  bestRegions: string[];
 }
 
 export interface Category {
