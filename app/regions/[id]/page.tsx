@@ -7,6 +7,8 @@ import { SPOTS } from "@/data/spots";
 import Breadcrumb from "@/components/Breadcrumb";
 import DetailHero from "@/components/DetailHero";
 import Footer from "@/components/Footer";
+import ArticleGallery from "@/components/ArticleGallery";
+import HokkaidoAreaGuide from "@/components/HokkaidoAreaGuide";
 
 export function generateStaticParams() {
   return REGIONS.map((r) => ({ id: r.id }));
@@ -31,21 +33,29 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 const HOKKAIDO_SEASONS = [
   {
     season: "Winter 冬 (December – March)",
+    img: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=800&q=75",
+    alt: "Sapporo Snow Festival ice sculptures at night",
     desc: "Hokkaido's defining season. The island receives some of the heaviest snowfall on earth, transforming it into a winter wonderland. Sapporo Snow Festival (early February) fills Odori Park with massive ice sculptures; Niseko and Furano offer legendary powder skiing; Shiretoko's drift ice creates a frozen seascape; and every onsen town becomes magical under snow. Average temperatures: -4°C to -8°C in Sapporo.",
     highlights: ["Sapporo Snow Festival (early February)", "Niseko / Furano powder skiing", "Shiretoko drift ice walking (Feb–Mar)", "Otaru Snow Light Path Festival", "Asahikawa Winter Festival & Ice Village", "Lake Shikotsu Ice Festival"],
   },
   {
     season: "Spring 春 (April – May)",
+    img: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=75",
+    alt: "Cherry blossoms at Goryōkaku Fort in Hakodate",
     desc: "Cherry blossoms arrive in Hokkaido last in the nation — Matsumae and Goryōkaku Fort in Hakodate bloom in late April, while Sapporo's blossoms peak in early May. Spring is a quieter season with comfortable temperatures (8°C–18°C), fresh green landscapes, and fewer tourists. It's the best time for scenic drives as roads reopen after winter.",
     highlights: ["Cherry blossoms at Goryōkaku Fort, Hakodate (late April)", "Matsumae — Hokkaido's only castle town, 10,000 cherry trees", "Sapporo cherry blossoms at Maruyama Park (early May)", "Spring wildflowers across Daisetsuzan", "Road openings for scenic mountain passes"],
   },
   {
     season: "Summer 夏 (June – August)",
+    img: "https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=800&q=75",
+    alt: "Lavender fields in Furano, Hokkaido",
     desc: "Hokkaido's summer is Japan's most comfortable — no rainy season (tsuyu) like the mainland, with warm days (22°C–26°C) and cool nights. This is lavender season in Furano (peaking mid-July), hiking season in Daisetsuzan National Park, and the time when Hokkaido's countryside bursts into colour. Sapporo's beer gardens open, and festivals light up every city.",
     highlights: ["Furano lavender fields (late June – early August)", "Biei flower fields and Blue Pond", "Daisetsuzan hiking (Japan's largest national park)", "Sapporo Beer Garden & Summer Festival", "Shakotan Peninsula — Hokkaido's bluest sea", "Tomamu Cloud Sea Terrace (June–October)"],
   },
   {
     season: "Autumn 秋 (September – November)",
+    img: "https://images.unsplash.com/photo-1763120339579-d660fbebaa16?w=800&q=75",
+    alt: "Autumn foliage at Daisetsuzan National Park",
     desc: "Hokkaido's autumn foliage arrives first in Japan — Daisetsuzan's peaks turn crimson as early as mid-September, with colour descending to lower elevations through October. The autumn light creates spectacular photography conditions across Biei's patchwork hills and around Lake Shikotsu and Lake Tōya. Temperatures cool rapidly (5°C–18°C), and this is peak season for salmon runs and autumnal seafood.",
     highlights: ["Daisetsuzan autumn foliage (mid-September — Japan's earliest)", "Jōzankei Gorge autumn colours (October)", "Lake Shikotsu & Lake Tōya autumn scenery", "Biei patchwork hills in autumn light", "Salmon run season — rivers and markets", "Noboribetsu Hell Festival (late August)"],
   },
@@ -54,35 +64,43 @@ const HOKKAIDO_SEASONS = [
 const HOKKAIDO_AREAS = [
   {
     name: "道央 Dō-ō (Central Hokkaido)",
+    img: "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800&q=75",
+    alt: "Otaru Canal in winter with snow and lights",
     cities: "Sapporo, Otaru, Niseko, Noboribetsu, Lake Shikotsu, Lake Tōya",
     desc: "The heart of Hokkaido — home to Sapporo (population 1.97 million), the romantic canal city of Otaru, world-class skiing at Niseko, and the volcanic hot springs of Noboribetsu. Two stunning caldera lakes (Shikotsu and Tōya) offer year-round beauty. This is where most visitors base themselves.",
   },
   {
     name: "道北 Dō-hoku (Northern Hokkaido)",
+    img: "https://images.unsplash.com/photo-1539430416000-065144bb6a86?w=800&q=75",
+    alt: "Patchwork hills of Biei in summer",
     cities: "Asahikawa, Furano, Biei, Wakkanai, Rishiri & Rebun Islands",
     desc: "Japan's most dramatic countryside landscapes — the patchwork hills of Biei, lavender fields of Furano, and the vast Daisetsuzan mountain range. Wakkanai is Japan's northernmost city, with ferries to the remote islands of Rishiri and Rebun. Asahikawa is home to the famous Asahiyama Zoo.",
   },
   {
     name: "道東 Dō-tō (Eastern Hokkaido)",
+    img: "https://images.unsplash.com/photo-1652786468745-8d8cd8c32cd4?w=800&q=75",
+    alt: "Shiretoko Peninsula coastline and wilderness",
     cities: "Shiretoko, Abashiri, Kushiro, Akan, Obihiro",
     desc: "The wildest part of Japan — Shiretoko UNESCO wilderness, drift ice at Abashiri, the mysterious marshlands of Kushiro (home to red-crowned cranes), and the Ainu cultural heartland of Lake Akan. Obihiro is famous for butadon (pork rice bowls) and sweets. This area is best explored by car.",
   },
   {
     name: "道南 Dō-nan (Southern Hokkaido)",
+    img: "https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=800&q=75",
+    alt: "Hakodate night view from Mount Hakodate",
     cities: "Hakodate, Matsumae, Onuma, Esashi",
     desc: "The gateway to Hokkaido via the Hokkaido Shinkansen. Hakodate's million-dollar night view, Western architecture, and morning market are the highlights. Matsumae is Hokkaido's only castle town with spectacular cherry blossoms. Onuma Quasi-National Park offers serene lakeside scenery.",
   },
 ];
 
 const HOKKAIDO_FOODS = [
-  { name: "味噌ラーメン Miso Ramen", desc: "Born in Sapporo in the 1950s — rich miso broth with butter, corn, and bean sprouts. Try at Ramen Yokochō (Ramen Alley) or Sumire." },
-  { name: "海鮮丼 Kaisendon", desc: "Seafood rice bowls piled high with uni (sea urchin), ikura (salmon roe), crab, scallops, and more. Nijo Market in Sapporo and Asaichi in Hakodate are legendary." },
-  { name: "ジンギスカン Genghis Khan", desc: "Hokkaido's signature lamb barbecue — thin slices of lamb grilled on a dome-shaped iron plate. Beer Garden in Sapporo is the classic spot." },
-  { name: "スープカレー Soup Curry", desc: "Sapporo's original creation — a spiced, fragrant curry broth with large vegetables and chicken on the bone. Garaku and Suage are local favourites." },
-  { name: "蟹 Crab", desc: "Hokkaido produces Japan's finest crab — hairy crab (kegani), king crab (taraba), snow crab (zuwaigani). Best at Nijo Market or Kani Honke." },
-  { name: "メロン Yūbari Melon", desc: "Japan's most premium melon — individually boxed and gift-wrapped. Can sell for over ¥30,000. Yūbari melon soft-serve is the affordable version." },
-  { name: "白い恋人 Shiroi Koibito", desc: "Hokkaido's most famous souvenir — white chocolate cookies. Visit Shiroi Koibito Park in Sapporo to see the factory and try fresh-made versions." },
-  { name: "乳製品 Dairy", desc: "Hokkaido produces over 50% of Japan's milk and butter. LeTAO cheesecake (Otaru), Royce chocolate, and fresh soft-serve ice cream everywhere." },
+  { name: "味噌ラーメン Miso Ramen", img: "https://images.unsplash.com/photo-1557872943-16a5ac26437e?w=800&q=75", alt: "Bowl of miso ramen with butter and corn", desc: "Born in Sapporo in the 1950s — rich miso broth with butter, corn, and bean sprouts. Try at Ramen Yokochō (Ramen Alley) or Sumire." },
+  { name: "海鮮丼 Kaisendon", img: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&q=75", alt: "Fresh kaisendon seafood rice bowl with salmon roe and uni", desc: "Seafood rice bowls piled high with uni (sea urchin), ikura (salmon roe), crab, scallops, and more. Nijo Market in Sapporo and Asaichi in Hakodate are legendary." },
+  { name: "ジンギスカン Genghis Khan", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=75", alt: "Genghis Khan lamb barbecue on dome-shaped grill", desc: "Hokkaido's signature lamb barbecue — thin slices of lamb grilled on a dome-shaped iron plate. Beer Garden in Sapporo is the classic spot." },
+  { name: "スープカレー Soup Curry", img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&q=75", alt: "Sapporo-style soup curry with vegetables", desc: "Sapporo's original creation — a spiced, fragrant curry broth with large vegetables and chicken on the bone. Garaku and Suage are local favourites." },
+  { name: "蟹 Crab", img: "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=800&q=75", alt: "Fresh Hokkaido crab legs on ice", desc: "Hokkaido produces Japan's finest crab — hairy crab (kegani), king crab (taraba), snow crab (zuwaigani). Best at Nijo Market or Kani Honke." },
+  { name: "メロン Yūbari Melon", img: "https://images.unsplash.com/photo-1571575173700-afb9492e6a50?w=800&q=75", alt: "Yūbari melon sliced and ready to serve", desc: "Japan's most premium melon — individually boxed and gift-wrapped. Can sell for over ¥30,000. Yūbari melon soft-serve is the affordable version." },
+  { name: "白い恋人 Shiroi Koibito", img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=75", alt: "Japanese white chocolate cookies and sweets", desc: "Hokkaido's most famous souvenir — white chocolate cookies. Visit Shiroi Koibito Park in Sapporo to see the factory and try fresh-made versions." },
+  { name: "乳製品 Dairy", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=800&q=75", alt: "Hokkaido soft-serve ice cream cone", desc: "Hokkaido produces over 50% of Japan's milk and butter. LeTAO cheesecake (Otaru), Royce chocolate, and fresh soft-serve ice cream everywhere." },
 ];
 
 export default async function RegionPage({ params }: { params: Promise<{ id: string }> }) {
@@ -127,6 +145,20 @@ export default async function RegionPage({ params }: { params: Promise<{ id: str
           <p>{region.desc}</p>
         </div>
 
+        {/* Spot Photos */}
+        {regionSpots.length > 0 && (
+          <div className="detail-section">
+            <h2><em>PHOTOS</em>{region.en}の風景</h2>
+            <ArticleGallery
+              images={regionSpots.slice(0, 3).map((s) => ({
+                src: s.img.replace(/w=\d+/, "w=800"),
+                alt: s.en,
+                caption: `${s.n} — ${s.desc.split(".")[0]}.`,
+              }))}
+            />
+          </div>
+        )}
+
         {/* Highlights */}
         <div className="detail-section">
           <h2><em>HIGHLIGHTS</em>見どころ</h2>
@@ -149,6 +181,9 @@ export default async function RegionPage({ params }: { params: Promise<{ id: str
                     fontFamily: "var(--font-cg)", fontSize: ".95rem", letterSpacing: ".12em",
                     color: "var(--gold)", marginBottom: ".45rem", fontWeight: 400,
                   }}>{s.season}</h3>
+                  <div className="info-card-img">
+                    <Image src={s.img} alt={s.alt} fill style={{ objectFit: "cover" }} sizes="(max-width:768px) 100vw, 1050px" />
+                  </div>
                   <p style={{ marginBottom: ".85rem" }}>{s.desc}</p>
                   <ul className="highlights-list">
                     {s.highlights.map((h, j) => <li key={j}>{h}</li>)}
@@ -160,15 +195,7 @@ export default async function RegionPage({ params }: { params: Promise<{ id: str
             {/* Area Guide */}
             <div className="detail-section">
               <h2><em>AREA GUIDE</em>エリア別ガイド</h2>
-              <div className="info-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
-                {HOKKAIDO_AREAS.map((a, i) => (
-                  <div key={i} className="info-card">
-                    <div className="info-card-label">{a.name}</div>
-                    <div style={{ fontSize: ".68rem", color: "var(--gold)", marginBottom: ".45rem", letterSpacing: ".04em" }}>{a.cities}</div>
-                    <p style={{ fontSize: ".75rem", lineHeight: 1.85, color: "var(--stone)" }}>{a.desc}</p>
-                  </div>
-                ))}
-              </div>
+              <HokkaidoAreaGuide areas={HOKKAIDO_AREAS} />
             </div>
 
             {/* Food Culture */}
@@ -179,9 +206,14 @@ export default async function RegionPage({ params }: { params: Promise<{ id: str
               </p>
               <div className="info-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
                 {HOKKAIDO_FOODS.map((f, i) => (
-                  <div key={i} className="info-card">
-                    <div className="info-card-label">{f.name}</div>
-                    <p style={{ fontSize: ".75rem", lineHeight: 1.85, color: "var(--stone)" }}>{f.desc}</p>
+                  <div key={i} className="info-card" style={{ padding: 0, overflow: "hidden" }}>
+                    <div className="info-card-img">
+                      <Image src={f.img} alt={f.alt} fill style={{ objectFit: "cover" }} sizes="(max-width:768px) 100vw, 33vw" />
+                    </div>
+                    <div style={{ padding: "1.3rem" }}>
+                      <div className="info-card-label">{f.name}</div>
+                      <p style={{ fontSize: ".75rem", lineHeight: 1.85, color: "var(--stone)" }}>{f.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>

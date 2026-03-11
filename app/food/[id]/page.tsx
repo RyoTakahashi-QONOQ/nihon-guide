@@ -5,6 +5,7 @@ import { FOODS } from "@/data/foods";
 import Breadcrumb from "@/components/Breadcrumb";
 import DetailHero from "@/components/DetailHero";
 import Footer from "@/components/Footer";
+import ArticleGallery from "@/components/ArticleGallery";
 
 export function generateStaticParams() {
   return FOODS.map((f) => ({ id: f.id }));
@@ -47,6 +48,13 @@ export default async function FoodPage({ params }: { params: Promise<{ id: strin
           <h2><em>GUIDE</em>{food.n}ガイド</h2>
           <p>{food.longDesc}</p>
         </div>
+
+        {food.gallery && food.gallery.length > 0 && (
+          <div className="detail-section">
+            <h2><em>GALLERY</em>ギャラリー</h2>
+            <ArticleGallery images={food.gallery} cols={2} />
+          </div>
+        )}
 
         <div className="detail-section">
           <h2><em>HISTORY</em>歴史</h2>

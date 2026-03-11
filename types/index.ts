@@ -1,5 +1,11 @@
 export type Season = "spring" | "summer" | "autumn" | "winter";
 
+export interface ArticleImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface Region {
   id: string;
   n: string;
@@ -32,6 +38,7 @@ export interface Spot {
   longDesc: string;
   access: string;
   tips: string[];
+  gallery?: ArticleImage[];
 }
 
 export interface Food {
@@ -45,6 +52,7 @@ export interface Food {
   longDesc: string;
   history: string;
   bestRegions: string[];
+  gallery?: ArticleImage[];
 }
 
 export interface Category {

@@ -8,6 +8,7 @@ import { bookingUrl, klookUrl } from "@/data/affiliate";
 import Breadcrumb from "@/components/Breadcrumb";
 import DetailHero from "@/components/DetailHero";
 import Footer from "@/components/Footer";
+import ArticleGallery from "@/components/ArticleGallery";
 
 export function generateStaticParams() {
   return SPOTS.map((s) => ({ id: s.id }));
@@ -86,6 +87,13 @@ export default async function SpotPage({ params }: { params: Promise<{ id: strin
           <h2><em>OVERVIEW</em>{spot.n}ガイド</h2>
           <p>{spot.longDesc}</p>
         </div>
+
+        {spot.gallery && spot.gallery.length > 0 && (
+          <div className="detail-section">
+            <h2><em>GALLERY</em>ギャラリー</h2>
+            <ArticleGallery images={spot.gallery} />
+          </div>
+        )}
 
         <div className="detail-section">
           <h2><em>FEATURES</em>特徴</h2>
