@@ -1504,7 +1504,7 @@ footer {
 }
 .rmap-region-label {
   font-family: var(--font-sj);
-  font-size: 12px;
+  font-size: 18px;
   fill: var(--ink);
   text-anchor: middle;
   pointer-events: none;
@@ -1514,11 +1514,11 @@ footer {
 }
 .rmap-region-sublabel {
   font-family: var(--font-cg);
-  font-size: 8px;
+  font-size: 11px;
   fill: var(--stone);
   text-anchor: middle;
   font-style: italic;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   pointer-events: none;
 }
 .rmap-pin {
@@ -1538,21 +1538,21 @@ footer {
 }
 .rmap-pin-label {
   font-family: var(--font-sj);
-  font-size: 7px;
+  font-size: 10px;
   fill: var(--ink);
   text-anchor: middle;
   pointer-events: none;
 }
 .rmap-pin-sublabel {
   font-family: var(--font-dms);
-  font-size: 5.5px;
+  font-size: 8px;
   fill: var(--stone);
   text-anchor: middle;
   pointer-events: none;
 }
 .rmap-compass-label {
   font-family: var(--font-cg);
-  font-size: 10px;
+  font-size: 14px;
   fill: rgba(201, 168, 76, 0.4);
   letter-spacing: 0.15em;
 }
