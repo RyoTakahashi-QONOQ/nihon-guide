@@ -505,22 +505,14 @@ body::after {
 /* ===== REGION GRID ===== */
 .rgrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
 }
 .rcard {
   position: relative;
   overflow: hidden;
   cursor: pointer;
   aspect-ratio: 3/4;
-}
-.rcard:nth-child(1) {
-  grid-row: span 2;
-  aspect-ratio: auto;
-}
-.rcard:nth-child(2),
-.rcard:nth-child(3) {
-  aspect-ratio: 4/3;
 }
 .rcimg {
   position: absolute;
@@ -1827,10 +1819,6 @@ footer {
 @media (max-width: 1024px) {
   .rgrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .rcard:nth-child(1) {
-    grid-row: auto;
-    aspect-ratio: 3/4;
   }
   .spgrid {
     grid-template-columns: repeat(2, 1fr);
