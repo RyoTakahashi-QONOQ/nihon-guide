@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
       <div className="fbot">
         <span>NIHON — Japan&apos;s Premier Travel Guide</span>
-        <span>日本観光ガイド · Inbound Welcome</span>
+        <span>Your Gateway to Japan</span>
       </div>
     </footer>
   );

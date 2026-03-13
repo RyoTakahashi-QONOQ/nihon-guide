@@ -7,11 +7,11 @@ interface SeasonBarProps {
 }
 
 const SEASONS = [
-  { key: "all", label: "ALL YEAR", jp: "通年" },
-  { key: "spring", label: "🌸 SPRING", jp: "春 Mar–May" },
-  { key: "summer", label: "🎆 SUMMER", jp: "夏 Jun–Aug" },
-  { key: "autumn", label: "🍁 AUTUMN", jp: "秋 Sep–Nov" },
-  { key: "winter", label: "❄️ WINTER", jp: "冬 Dec–Feb" },
+  { key: "all", label: "ALL YEAR", jp: "Year-round" },
+  { key: "spring", label: "🌸 SPRING", jp: "Mar – May" },
+  { key: "summer", label: "🎆 SUMMER", jp: "Jun – Aug" },
+  { key: "autumn", label: "🍁 AUTUMN", jp: "Sep – Nov" },
+  { key: "winter", label: "❄️ WINTER", jp: "Dec – Feb" },
 ];
 
 export default function SeasonBar({ season, setSeason, onToast }: SeasonBarProps) {

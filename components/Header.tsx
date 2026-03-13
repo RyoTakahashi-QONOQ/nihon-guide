@@ -28,7 +28,7 @@ export default function Header({ onOpenMap, onToast }: HeaderProps) {
       <header className={`site-header${scrolled ? " scrolled" : ""}`}>
         <Link href="/" className="logo" style={{ textDecoration: "none" }}>
           <span className="logo-m">NIHON</span>
-          <span className="logo-j">日本観光ガイド</span>
+          <span className="logo-j">Japan Travel Guide</span>
         </Link>
         <nav className="site-nav">
           {navLinks.map((l) => (

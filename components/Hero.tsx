@@ -49,12 +49,11 @@ export default function Hero() {
       ))}
       <div className="hero-overlay" />
       <div className="hring" />
-      <div className="hvt">発見の旅へ · DISCOVER JAPAN</div>
+      <div className="hvt">JOURNEY OF DISCOVERY · NIHON</div>
       <div className="hcon">
-        <span className="heye">THE COMPLETE GUIDE TO JAPAN · 日本旅行完全ガイド</span>
+        <span className="heye">THE COMPLETE GUIDE TO JAPAN</span>
         <h1 className="hh1">
-          日本を、<br />深く知る
-          <span>Discover the Soul of Japan</span>
+          Discover the<br />Soul of Japan
         </h1>
         <p className="hsub">
           47 Prefectures · 10,000+ Destinations · Four Seasons of Wonder<br />

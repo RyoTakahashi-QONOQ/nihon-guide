@@ -15,7 +15,7 @@ function StatItem({ target, suffix, unit, label }: { target: number; suffix?: st
 export default function StatsBar() {
   return (
     <div className="stats">
-      <StatItem target={47} unit="都道府県 / Prefectures" label="Complete coverage" />
+      <StatItem target={47} unit="Prefectures" label="Complete coverage" />
       <StatItem target={10} suffix="K+" unit="Destinations" label="Curated spots" />
       <StatItem target={25} unit="UNESCO Sites" label="World heritage" />
       <StatItem target={3} suffix=" Cities" unit="Michelin Guide" label="World's top dining" />

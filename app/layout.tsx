@@ -32,15 +32,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "NIHON — Japan Travel Guide | 日本観光完全ガイド",
+  title: "NIHON — The Complete Japan Travel Guide",
   description:
     "The complete Japan travel guide for international visitors. Discover 10,000+ destinations across all 47 prefectures — temples, nature, food, onsen and more.",
   keywords:
-    "Japan travel guide, visit Japan, Tokyo, Kyoto, Osaka, Japanese temples, Japan tourism, inbound Japan, 日本観光, Japan itinerary, best places in Japan",
+    "Japan travel guide, visit Japan, Tokyo, Kyoto, Osaka, Japanese temples, Japan tourism, inbound Japan, Japan itinerary, best places in Japan",
   authors: [{ name: "NIHON Japan Travel Guide" }],
   openGraph: {
     type: "website",
-    title: "NIHON — Japan Travel Guide | 日本観光完全ガイド",
+    title: "NIHON — The Complete Japan Travel Guide",
     description:
       "The complete Japan travel guide. 10,000+ destinations, all 47 prefectures, every season.",
     images: [
