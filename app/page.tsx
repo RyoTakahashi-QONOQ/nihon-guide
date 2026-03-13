@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <>
       <Header onOpenMap={() => setMapOpen(true)} onToast={toast} />
-      <Hero onSearch={doSearch} query={query} />
+      <Hero />
       <SeasonBar season={season} setSeason={setSeason} onToast={toast} />
       <CategoryBar category={category} setCategory={setCategory} />
       <StatsBar />

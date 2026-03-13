@@ -2,11 +2,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
-interface HeroProps {
-  onSearch: (q: string) => void;
-  query: string;
-}
-
 const SLIDES = [
   { src: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1800&q=80", alt: "Fushimi Inari shrine gates in Kyoto" },
   { src: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1800&q=80", alt: "Mount Fuji with cherry blossoms" },
@@ -15,7 +10,7 @@ const SLIDES = [
   { src: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=1800&q=80", alt: "Cherry blossom canal in spring" },
 ];
 
-export default function Hero({ onSearch, query }: HeroProps) {
+export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
@@ -65,17 +60,6 @@ export default function Hero({ onSearch, query }: HeroProps) {
           47 Prefectures · 10,000+ Destinations · Four Seasons of Wonder<br />
           Where ancient tradition meets the pulse of tomorrow
         </p>
-        <div className="sbar">
-          <input
-            type="text"
-            value={query}
-            placeholder="Search destinations, food, culture..."
-            onChange={(e) => onSearch(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") onSearch((e.target as HTMLInputElement).value); }}
-          />
-          <button onClick={() => onSearch(query)}>SEARCH</button>
-        </div>
-        {/* Slide indicators */}
         <div className="hero-dots">
           {SLIDES.map((_, i) => (
             <button

@@ -258,9 +258,9 @@ body::after {
   inset: 0;
   background: linear-gradient(
       to bottom,
-      rgba(26, 18, 8, 0.35) 0%,
-      rgba(26, 18, 8, 0.15) 40%,
-      rgba(26, 18, 8, 0.45) 100%
+      rgba(26, 18, 8, 0.5) 0%,
+      rgba(26, 18, 8, 0.35) 40%,
+      rgba(26, 18, 8, 0.6) 100%
     );
   z-index: 2;
 }
@@ -357,6 +357,8 @@ body::after {
   line-height: 1.05;
   margin-bottom: 1.3rem;
   letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 .hh1 span {
   display: block;
@@ -364,53 +366,19 @@ body::after {
   font-size: clamp(1.3rem, 3vw, 2.8rem);
   font-style: italic;
   font-weight: 300;
-  color: var(--stone);
+  color: rgba(255, 255, 255, 0.75);
   letter-spacing: 0.18em;
   margin-top: 0.4rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 .hsub {
   font-size: 0.8rem;
   letter-spacing: 0.07em;
-  color: var(--stone);
-  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
   line-height: 2;
   font-weight: 300;
-}
-.sbar {
-  display: flex;
-  max-width: 540px;
-  margin: 0 auto;
-  border: 1px solid rgba(201, 168, 76, 0.38);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
-}
-.sbar input {
-  flex: 1;
-  padding: 0.95rem 1.3rem;
-  border: none;
-  background: none;
-  font-family: var(--font-dms);
-  font-size: 0.8rem;
-  color: var(--ink);
-  outline: none;
-  letter-spacing: 0.04em;
-}
-.sbar input::placeholder {
-  color: var(--stone);
-}
-.sbar button {
-  padding: 0.95rem 1.7rem;
-  background: var(--gold);
-  border: none;
-  color: #fff;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  cursor: pointer;
-  font-family: var(--font-cg);
-  transition: background 0.3s;
-}
-.sbar button:hover {
-  background: var(--ink);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
 }
 .scue {
   position: absolute;
