@@ -636,6 +636,59 @@ body::after {
   font-style: italic;
 }
 
+/* ===== JAPAN REGION MAP (mini) ===== */
+.jrm {
+  display: inline-block;
+  flex-shrink: 0;
+}
+.jrm svg {
+  width: 100%;
+  height: 100%;
+}
+.jrm-md {
+  width: 120px;
+  height: 168px;
+}
+.jrm-sm {
+  width: 48px;
+  height: 67px;
+}
+.jrm-region {
+  fill: var(--pale);
+  stroke: var(--stone2);
+  stroke-width: 0.8;
+  transition: fill 0.3s;
+}
+.jrm-active {
+  fill: rgba(201, 168, 76, 0.35);
+  stroke: var(--gold);
+  stroke-width: 1.6;
+  transition: fill 0.3s;
+}
+.rcard-map {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 2;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+.rcard:hover .rcard-map {
+  opacity: 0.9;
+}
+.rcard-map .jrm-region {
+  fill: rgba(255, 255, 255, 0.15);
+  stroke: rgba(255, 255, 255, 0.25);
+}
+.rcard-map .jrm-active {
+  fill: rgba(201, 168, 76, 0.55);
+  stroke: var(--gold2);
+}
+@media (max-width: 768px) {
+  .rcard-map { display: none; }
+}
+
 /* ===== SPOTS ===== */
 .spgrid {
   display: grid;

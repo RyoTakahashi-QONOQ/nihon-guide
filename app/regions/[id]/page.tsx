@@ -9,6 +9,7 @@ import DetailHero from "@/components/DetailHero";
 import Footer from "@/components/Footer";
 import ArticleGallery from "@/components/ArticleGallery";
 import HokkaidoAreaGuide from "@/components/HokkaidoAreaGuide";
+import JapanRegionMap from "@/components/JapanRegionMap";
 
 export function generateStaticParams() {
   return REGIONS.map((r) => ({ id: r.id }));
@@ -125,6 +126,11 @@ export default async function RegionPage({ params }: { params: Promise<{ id: str
       <div className="detail-content">
         {/* Quick Info */}
         <div className="info-grid">
+          <div className="info-card" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div className="info-card-label">LOCATION</div>
+            <JapanRegionMap activeRegion={region.id} size="md" />
+            <div className="info-card-value" style={{ textAlign: "center", marginTop: ".5rem" }}>{region.en}</div>
+          </div>
           <div className="info-card">
             <div className="info-card-label">DESTINATIONS</div>
             <div className="info-card-value">{region.cnt} spots to explore</div>

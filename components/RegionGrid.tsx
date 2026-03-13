@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { REGIONS } from "@/data/regions";
+import JapanRegionMap from "@/components/JapanRegionMap";
 
 export default function RegionGrid() {
   return (
@@ -18,6 +19,9 @@ export default function RegionGrid() {
                 <Image src={r.img} alt={r.en} fill style={{ objectFit: "cover" }} sizes="(max-width:768px) 50vw, 25vw" />
               </div>
               <div className="rcov" />
+              <div className="rcard-map">
+                <JapanRegionMap activeRegion={r.id} size="sm" />
+              </div>
               <div className="rcnt">{r.cnt} SPOTS</div>
               <div className="rcbody">
                 <div className="rnum">{r.num}</div>
