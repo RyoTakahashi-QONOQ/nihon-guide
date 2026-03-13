@@ -8,5 +8,5 @@ export const CATEGORIES: Category[] = [
   { ico: "🎭", n: "伝統文化", en: "Traditional Culture", num: 1204, id: "culture" },
   { ico: "🏯", n: "城・歴史", en: "Castles & History", num: 544, id: "castle" },
   { ico: "🌆", n: "都市・現代", en: "Urban & Modern", num: 896, id: "city" },
-  { ico: "🏕️", n: "アウトドア", en: "Outdoor & Adventure", num: 1128, id: "nature" },
+  { ico: "🏕️", n: "アウトドア", en: "Outdoor & Adventure", num: 1128, id: "outdoor" },
 ];

@@ -19,7 +19,7 @@ export default function SeasonalSection({ setSeason }: SeasonalSectionProps) {
           <div style={{ width: 34, height: 1, background: "var(--gold)", marginBottom: "0.85rem" }} />
           <h2><em>SEASONAL HIGHLIGHTS</em>今の季節に<br />行くべき場所</h2>
           <p>Japan&apos;s four seasons transform the same landscapes into completely different worlds — cherry blossoms, summer festivals, crimson maples, snow villages. Each season holds its own unrepeatable magic.</p>
-          <a href="#" className="btnol">Explore seasonal guide</a>
+          <a href="/regions/hokkaido" className="btnol">Explore seasonal guide</a>
         </div>
         <div className="smcards">
           {CARDS.map((c) => (

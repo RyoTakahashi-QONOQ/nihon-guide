@@ -18,7 +18,7 @@ export default function CategoryScroll({ setCategory, onToast }: CategoryScrollP
       <div className="catinn">
         <div className="sech">
           <div className="sect"><em>EXPLORE BY CATEGORY</em>カテゴリで探す</div>
-          <a href="#" className="seeall" style={{ color: "var(--gold)" }}>All →</a>
+          <button className="seeall" style={{ color: "var(--gold)", background: "none", border: "none", cursor: "pointer" }} onClick={() => { setCategory(""); onToast("Showing all spots"); document.getElementById("spots")?.scrollIntoView({ behavior: "smooth" }); }}>All →</button>
         </div>
         <div className="cscroll">
           {CATEGORIES.map((c, i) => (

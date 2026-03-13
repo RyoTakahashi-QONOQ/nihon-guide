@@ -9,7 +9,7 @@ export default function RegionGrid() {
       <div className="sec">
         <div className="sech">
           <div className="sect"><em>REGIONS OF JAPAN</em>地域から探す</div>
-          <Link href="/regions/hokkaido" className="seeall">View all regions →</Link>
+          <Link href="/#spots" className="seeall">Explore destinations →</Link>
         </div>
         <div className="rgrid">
           {REGIONS.map((r) => (

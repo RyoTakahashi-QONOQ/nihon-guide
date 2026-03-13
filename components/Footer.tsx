@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="fbrand">
           <div className="logo"><span className="logo-m">NIHON</span></div>
           <p>The most comprehensive Japan travel guide — built for every season, every region, every palate. Bringing the depth and beauty of Japan to travellers worldwide.</p>
-          <p style={{ marginTop: "0.7rem", fontSize: "0.6rem", color: "rgba(255,255,255,.14)" }}>© 2024 NIHON Japan Travel Guide</p>
+          <p style={{ marginTop: "0.7rem", fontSize: "0.6rem", color: "rgba(255,255,255,.14)" }}>© {new Date().getFullYear()} NIHON Japan Travel Guide</p>
         </div>
         <div className="fcol">
           <h4>DISCOVER</h4>
